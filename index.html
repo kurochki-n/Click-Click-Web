@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Click Counter</title>
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            background-color: #1e1922;
+            color: rgb(209, 205, 202);
+            font-family: 'Arial black', sans-serif;
+            margin: 0;
+            user-select: none; /* Prevent text selection for the whole body */
+        }
+        .counter {
+            font-size: 13vw; /* Use viewport width for responsive font size */
+            margin-bottom: 15vh; /* Use viewport height for responsive margin */
+            user-select: none; /* Prevent text selection */
+        }
+        .clickable-icon-wrapper {
+            position: relative;
+            width: 40vw;
+            height: 40vw;
+            border-radius: 50%;
+            overflow: hidden;
+            cursor: pointer;
+            background: url('https://github.com/kurochki-n/kurochki-n/assets/160146470/fad52929-67b8-40aa-a57d-416d0a6e940b') no-repeat center center;
+            background-size: cover;
+            -webkit-user-drag: none; /* Prevent image dragging in WebKit browsers */
+            user-select: none; /* Prevent image selection */
+            transition: transform 0.1s; /* Smooth transition for transform */
+        }
+        .clickable-icon-wrapper:active {
+            transform: translateY(5px); /* Move down slightly on click */
+        }
+    </style>
+</head>
+<body>
+    <div class="counter" id="counter">0</div>
+    <div class="clickable-icon-wrapper" id="clickableIcon"></div>
+
+    <script>
+        let count = 0;
+        const counterElement = document.getElementById('counter');
+        const clickableIcon = document.getElementById('clickableIcon');
+
+        clickableIcon.addEventListener('click', () => {
+            count++;
+            counterElement.textContent = count;
+        });
+    </script>
+</body>
+</html>
