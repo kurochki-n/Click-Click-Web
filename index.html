@@ -5,8 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://telegram.org/js/telegram-web-app.js"></script>
     <script>
-        window.Telegram.WebApp.ready(); 
-        window.Telegram.WebApp.expand();
+        document.addEventListener('DOMContentLoaded', () => {
+            window.Telegram.WebApp.ready(); 
+            window.Telegram.WebApp.expand();
+        });
     </script>
     <title>Click Counter</title>
     <style>
@@ -18,14 +20,14 @@
             height: 100vh;
             background-color: #1e1922;
             color: rgb(209, 205, 202);
-            font-family: 'Arial black', sans-serif;
+            font-family: 'Arial Black', sans-serif;
             margin: 0;
-            user-select: none; /* Prevent text selection for the whole body */
+            user-select: none;
         }
         .counter {
-            font-size: 13vw; /* Use viewport width for responsive font size */
-            margin-bottom: 15vh; /* Use viewport height for responsive margin */
-            user-select: none; /* Prevent text selection */
+            font-size: 13vw;
+            margin-bottom: 15vh;
+            user-select: none;
         }
         .clickable-icon-wrapper {
             position: relative;
@@ -36,12 +38,12 @@
             cursor: pointer;
             background: url('https://github.com/kurochki-n/kurochki-n/assets/160146470/fad52929-67b8-40aa-a57d-416d0a6e940b') no-repeat center center;
             background-size: cover;
-            -webkit-user-drag: none; /* Prevent image dragging in WebKit browsers */
-            user-select: none; /* Prevent image selection */
-            transition: transform 0.1s; /* Smooth transition for transform */
+            -webkit-user-drag: none;
+            user-select: none;
+            transition: transform 0.1s;
         }
         .clickable-icon-wrapper:active {
-            transform: translateY(5px); /* Move down slightly on click */
+            transform: translateY(5px);
         }
     </style>
 </head>
@@ -57,6 +59,10 @@
         clickableIcon.addEventListener('click', () => {
             count++;
             counterElement.textContent = count;
+        });
+
+        window.addEventListener('resize', () => {
+            // Adjustments if necessary for different screen sizes
         });
     </script>
 </body>
